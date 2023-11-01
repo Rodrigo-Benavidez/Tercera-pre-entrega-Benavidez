@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Crear Zapatilla</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear Zapatilla
+{% endblock h1_header %}
+
+{% block main %}
+
+{% comment %} <form action="" method="POST">
+    {% csrf_token %}
+    <p>
+        Marca:
+        <input type="text" name="marca">
+    </p>
+    <p>
+        Descripcion:
+        <input type="text" name="descripcion">
+    </p>
+    <p>
+        Año:
+        <input type="number" name="anio">
+    </p>
+
+    <input type="submit" value="Crear">
+    <button>Crear</button>
+
+</form> {% endcomment %}
+
+{% comment %} <form action="" method="POST">
+    {% csrf_token %}
+    <p>
+        Marca:
+        <input type="text" name="marca">
+    </p>
+    <p>
+        Descripcion:
+        <input type="text" name="descripcion">
+    </p>
+    <p>
+        Año:
+        <input type="number" name="anio">
+    </p>
+
+    <input type="submit" value="Crear">
+
+</form> {% endcomment %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{formulario}} 
+    <input type="submit" value="Crear">
+
+</form>
+
+{% endblock main %}
+
+
+
