@@ -10,15 +10,20 @@ Zapatillas
 
 {% block main %}
 
+<p>
+    <a href={% url "crear_zapatilla" %}>Crear Zapatilla</a>
+</p>
+
 <form action="">
-    <input type="text" name="marca" placeholder="Adidas, Nike...">
+    {% comment %} <input type="text" name="marca" placeholder="Adidas, Nike..."> {% endcomment %}
+    {{formulario}}
     <input type="submit" value="Buscar">
 </form>
 
 {% if listado_de_zapatillas %}
 <ul>
     {% for zapatilla in listado_de_zapatillas %}
-    <li>{{zapatilla}}</li>
+    <li>{{zapatilla}} | <a href={% url "actualizar_zapatilla" zapatilla.id %}>Actualizar</a> | <a href={% url "eliminar_zapatilla" zapatilla.id %}>Eliminar</a> | <a href={% url "detalle_zapatilla" zapatilla.id %}>Detalle</a></li>
     {% endfor %}
 </ul>
 {% else %}

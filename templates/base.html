@@ -35,8 +35,18 @@
             <div class="container">
                 <a class="navbar-brand" href={% url "inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "zapatillas" %}>Zapatillas</a>
-                <a class="navbar-brand" href={% url "crear_zapatilla" %}>Crear Zapatilla</a>
-                {% comment %} <a class="btn btn-primary" href="#signup">Sign Up</a> {% endcomment %}
+                <a class="navbar-brand" href={% url "camperas" %}>Camperas</a>
+                {% if not request.user.is_authenticated %}
+                <a class="btn btn-primary" href={% url "login"%}>Iniciar Sesion</a>
+                <a class="btn btn-secondary" href={% url "registrarse"%}>Registrarse</a>
+                {% else %}
+                <a class="navbar-brand" href={% url "perfil" %}>
+                    {% if request.user.datosextra.avatar %}
+                    <img src={{request.user.datosextra.avatar.url}} alt="avatar" height='40px'>
+                    {% endif %}
+                    {{request.user.username}}</a>
+                <a class="btn btn-warning" href={% url "logout"%}>Cerrar Sesion</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->
@@ -69,7 +79,7 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a>
+                            <li class="list-inline-item"><a href={% url "about_me" %}>Acerca de mi</a>
                             </li>
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>

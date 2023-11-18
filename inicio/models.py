@@ -1,8 +1,10 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Zapatilla(models.Model):
     marca = models.CharField(max_length=30)
-    descripcion = models.TextField()
+    marca = models.CharField(max_length=30)
+    descripcion = RichTextField()
     anio = models.IntegerField()
     
     def __str__(self):

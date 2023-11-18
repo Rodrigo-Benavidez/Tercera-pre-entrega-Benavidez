@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Camperas</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Campera
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <a href={% url "crear_campera" %}>Crear Campera</a>
+</p>
+
+<form action={% url "camperas" %}>
+    <input type="text" name="color" placeholder="Azul, Verde...">
+    <input type="submit" value="Buscar">
+</form>
+
+{% if listado_de_camperas %}
+    <ul>
+        {% for campera in listado_de_camperas %}
+            <li>{{ campera.talle }} - {{ campera.color }} - {{ campera.fecha_creacion }} | <a href="{% url 'detalle_campera' campera.pk %}">Detalles</a> | <a href="{% url 'actualizar_campera' campera.pk %}">Actualizar</a> | <a href="{% url 'eliminar_campera' campera.pk %}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>La campera indicada no se encuentra disponible.</p>
+{% endif %}
+
+{% endblock main %}
